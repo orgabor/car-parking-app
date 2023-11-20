@@ -26,13 +26,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('parkings/start', [ParkingController::class, 'start']);
     Route::get('parkings/{parking}', [ParkingController::class, 'show']);
     Route::put('parkings/{parking}', [ParkingController::class, 'stop']);
+    Route::post('auth/logout', Auth\LogoutController::class);
+
 
 });
 
 Route::prefix('auth')->group(function () {
     Route::post('/register', Auth\RegisterController::class);
     Route::post('/login', Auth\LoginController::class);
-
 });
 
 Route::get('zones', [ZoneController::class, 'index']);
