@@ -45,6 +45,7 @@ const deleteVehicle = (vehicle) => {
                     </button>
                 </div>
             </div>
+            <ValidationError :errors="store.errors" field="general" />
         </div>
     </div>
 </template>

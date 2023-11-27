@@ -1,7 +1,7 @@
 import { ref } from "vue";
 import { defineStore } from "pinia";
 
-export const defineZone = defineStore("zone", () => {
+export const useZone = defineStore("zone", () => {
     const zones = ref([]);
     const loading = ref(false);
 

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Parking;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -20,5 +21,11 @@ class Vehicle extends Model
             $builder->where('user_id', auth()->id());
         });
     }
+
+     public function parkings()
+    {
+        return $this->hasMany(Parking::class);
+    }
+
 
 }

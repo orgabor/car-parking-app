@@ -58,4 +58,16 @@ class ParkingController extends Controller
 
         return ParkingResource::make($parking);
     }
+
+    public function stoppedParkings()
+    {
+        return ParkingResource::collection(Parking::with('vehicle', 'zone')->stopped()->get());
+    }
+
+    public function destroy(Parking $parking) {
+        $parking->delete();
+
+        return response()->noContent();
+    }
+
 }

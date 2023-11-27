@@ -64,6 +64,12 @@ class VehicleController extends Controller
     public function destroy(Vehicle $vehicle)
     {
         //
+        if ($vehicle->parkings()->count() > 0) {
+            return response()->json([
+    'errors' => ['general' => ['Can\'t delete vechicle ' . $vehicle->plate_number . ' as it has parking history. Please delete parking history first.']],
+                ], Response::HTTP_UNPROCESSABLE_ENTITY);
+
+        }
         $vehicle->delete();
 
         return response()->noContent();
